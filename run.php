@@ -37,16 +37,20 @@ echo "[?] Masukan Jumlah: ";
 $jumlah = trim(fgets(STDIN));
 echo "\n";
 
-for ($i=0; $i<$jumlah; $i++) { 
-    $otp = otp($no);
-    $nomer = $i+1;
-    echo "[{$nomer}] ";
-    if (strpos($otp, '"Request was throttled')){
-        echo "Gagal \n";
-    }else {
-        echo "Berhasil\n";
+if ($jumlah > 100) {
+    echo "Maruk amat bang";
+}else {
+    for ($i=0; $i<$jumlah; $i++) { 
+        $otp = otp($no);
+        $nomer = $i+1;
+        echo "[{$nomer}] ";
+        if (strpos($otp, '"Request was throttled')){
+            echo "Gagal \n";
+        }else {
+            echo "Berhasil\n";
+        }
+        sleep(3);
     }
-    sleep(3);
 }
 
 ?>
